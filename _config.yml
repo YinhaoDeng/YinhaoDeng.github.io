@@ -7,7 +7,7 @@ description: "The more you know, the less you know."
 keyword: "Yinhao, Yinhao Blog, 寅皓的博客, yinhaodeng, 邓寅皓, iOS, Apple, iPhone"
 url: "http://yinhaodeng.com"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://yinhaodeng.com" # you code repository
+github_repo: "https://github.com/YinhaoDeng/YinhaoDeng.github.io" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
