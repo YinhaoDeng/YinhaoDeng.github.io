@@ -40,7 +40,7 @@ tags:
 
 
 ## Case 2 自私者选择隐瞒，不到迫不得已时才会公布
-![](../img/bitcoin_selfish_case2.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/bitcoin_selfish_case1.png))
 在状态（1）时，自私者率先发现一个新的区块，但保密。
 在状态（2）时，自私者在其链下又发现了一个区块，继续保密。
 
@@ -52,7 +52,8 @@ tags:
 
 
 ## 一旦条件形成，自私者们就开始作祟了
-![](../img/selfish_pool.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/bitcoin_selfish_case2.png)
+
 自私者们的具体操作方法如下：
 1. 继续且只在自己的链上挖掘。(废话)
 2. 努力保持至少2个区块的领先。若自私者被诚实者追击支只有1个区块领先时，自私者公布其挖的所有区块，锁定收益，套现走人。
@@ -63,20 +64,22 @@ tags:
 
 ## 关于自私挖矿攻击的研究
 设：
-系统里有矿工 <img src="http://www.sciweavers.org/tex2img.php?eq=%241%2C...n%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$1,...n$" width="39" height="17" />, 矿工 <img src="http://www.sciweavers.org/tex2img.php?eq=%24i%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$i$" width="7" height="14" /> 有<img src="http://www.sciweavers.org/tex2img.php?eq=%24m_%7Bi%7D%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$m_{i}$" width="22" height="12" />的算力，总算力为1：<img src="http://www.sciweavers.org/tex2img.php?eq=%24%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20m_%7Bi%7D%3D1%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$\sum_{i=1}^{n} m_{i}=1$" width="92" height="21" />。自私者们的算力为<img src="http://www.sciweavers.org/tex2img.php?eq=%24%5Calpha%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$\alpha$" width="15" height="10" />，那么诚实者算力为<img src="http://www.sciweavers.org/tex2img.php?eq=%24%EF%BC%881-%5Calpha%EF%BC%89%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$（1-\alpha）$" width="28" height="14" />。诚实者中选择在自私者矿池中挖掘的比例为<img src="http://www.sciweavers.org/tex2img.php?eq=%24%5Cgamma%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$\gamma$" width="14" height="12" />，则诚实者中选择在诚实者矿池中挖掘的比例为<img src="http://www.sciweavers.org/tex2img.php?eq=%24%EF%BC%881-%5Cgamma%EF%BC%89%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$（1-\gamma）$" width="26" height="17" />。
+系统里有矿工 $1,...n$, 矿工 $i$ 有$m_{i}$的算力，总算力为1：$\sum_{i=1}^{n} m_{i}=1$。自私者们的算力为$\alpha$，那么诚实者算力为$（1-\alpha）$。诚实者中选择在自私者矿池中挖掘的比例为$\gamma$，则诚实者中选择在诚实者矿池中挖掘的比例为$（1-\gamma）$。
 
 我们先看一下正常情况下的收益率：
-设自私矿池收益率为<img src="http://www.sciweavers.org/tex2img.php?eq=%24r_%7Bpool%7D%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$r_{pool}$" width="32" height="14" />， 诚实者收益率为<img src="http://www.sciweavers.org/tex2img.php?eq=%24r_%7Bothers%7D%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$r_{others}$" width="43" height="12" />。不难看出 <img src="http://www.sciweavers.org/tex2img.php?eq=%24r_%7Bpool%7D%20%5Cpropto%20%5Calpha%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$r_{pool} \propto \alpha$" width="65" height="14" />。理想情况下<p style="text-align:center;"><img src="http://www.sciweavers.org/tex2img.php?eq=%24%24r_%7Bpool%7D%20%2Br_%7Bothers%7D%3D1%24%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$$r_{pool} +r_{others}=1$$" width="122" height="18" /></p>
+设自私矿池收益率为$r_{pool}$， 诚实者收益率为$r_{others}$。不难看出 $r_{pool} \propto \alpha$。理想情况下$$r_{pool} +r_{others}=1$$
 
 下面我们把自私者作祟的情况考虑进来：
 自私者是**故意**要在网络中**创造多个分支**，这导致会有很多的区块没有被囊括进网络。所以区块生成速度比正常情况要慢。（区块没被承认，就没有奖励）
-<p style="text-align:center;"><img src="http://www.sciweavers.org/tex2img.php?eq=%24%24r_%7Bpool%7D%20%2Br_%7Bothers%7D%3C1%24%24%20&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$$r_{pool} +r_{others}<1$$ " width="122" height="18" ></p>
+$$r_{pool} +r_{others}<1$$ 
 
 
 每个矿工的真实收益率是收益率比率。
-<p style="text-align:center;"><img src="http://www.sciweavers.org/tex2img.php?eq=%24%24R_%7Bpool%7D%20%3D%20%5Cfrac%7Br_%7Bpool%7D%7D%7Br_%7Bpool%7D%2Br_%7Bothers%7D%7D%3D%20%5Cfrac%7B%5Calpha%281-%5Calpha%5E%7B2%7D%29%284%5Calpha%2B%5Cgamma%281-2%5Calpha%29%29-%5Calpha%5E%7B3%7D%7D%7B1-%5Calpha%281%2B%282-%5Calpha%29%5Calpha%29%7D%24%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$$R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\alpha+\gamma(1-2\alpha))-\alpha^{3}}{1-\alpha(1+(2-\alpha)\alpha)}$$" width="299" height="29" /></p>
+$$R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\alpha+\gamma(1-2\alpha))-\alpha^{3}}{1-\alpha(1+(2-\alpha)\alpha)}$$
 
 假设诚实者占多数： 
-<p style="text-align:center;"><img src="http://www.sciweavers.org/tex2img.php?eq=%24%240%5Cle%5Calpha%5Cle%5Cfrac%7B1%7D%7B2%7D%24%24&bc=White&fc=Black&im=jpg&fs=12&ff=modern&edit=0" align="center" border="0" alt="$$0\le\alpha\le\frac{1}{2}$$" width="74" height="22" /></p>
-当自私者的算力满足以下要求时，自私者可以赢得更多的奖励： <img src="https://bit.ly/3ukKh45" align="center" border="0" alt="$$R_{pool}>\alpha$$" width="71" height="18" >
-给定$\gamma$，当$\alpha$满足以下要求时，自私者矿池可以比应得的赢得更多： <p style="text-align:center;"><img src="https://render.githubusercontent.com/render/math?math=$\frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}$"> </p>
+$$0\le\alpha\le\frac{1}{2}$$
+当自私者的算力满足以下要求时，自私者可以赢得更多的奖励： 
+$$R_{pool}>\alpha$$
+给定$\gamma$，当$\alpha$满足以下要求时，自私者矿池可以比应得的赢得更多：  
+$$\frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}$$
