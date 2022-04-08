@@ -23,7 +23,7 @@ tags:
 当诚实者抢先挖到新区块且广播后，自私者此时并没有攻击的选择。自私者会接着诚实者公布的新区块后继续挖掘。
 
 ## Case 1 自私者挖到新区块就公布
-![](../img/bitcoin_selfish_case1.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case1.png)
 
 *图中，蓝色方框代表公链区块头；粉色方框代表自私者挖到的区块，处于保密状态；绿色方框代表诚实者挖到的区块（默认为已公开状态）*
 
@@ -40,7 +40,7 @@ tags:
 
 
 ## Case 2 自私者选择隐瞒，不到迫不得已时才会公布
-![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/bitcoin_selfish_case1.png))
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case1.png)
 在状态（1）时，自私者率先发现一个新的区块，但保密。
 在状态（2）时，自私者在其链下又发现了一个区块，继续保密。
 
@@ -52,7 +52,7 @@ tags:
 
 
 ## 一旦条件形成，自私者们就开始作祟了
-![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/bitcoin_selfish_case2.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case2.png)
 
 自私者们的具体操作方法如下：
 1. 继续且只在自己的链上挖掘。(废话)
