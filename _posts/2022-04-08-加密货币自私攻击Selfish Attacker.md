@@ -82,5 +82,5 @@ $$R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\
 $$0\le\alpha\le\frac{1}{2}$$
 当自私者的算力满足以下要求时，自私者可以赢得更多的奖励： 
 $$R_{pool}>\alpha$$
-给定$\gamma$，当$\alpha$满足以下要求时，自私者矿池可以比应得的赢得更多：  
+给定$$\gamma$$，当$$\alpha$$满足以下要求时，自私者矿池可以比应得的赢得更多：  
 $$\frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}$$
