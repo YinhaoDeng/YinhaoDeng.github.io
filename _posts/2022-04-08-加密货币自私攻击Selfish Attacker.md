@@ -69,6 +69,7 @@ tags:
 
 我们先看一下正常情况下的收益率：
 设自私矿池收益率为$r_{pool}$， 诚实者收益率为$$r_{others}$$。不难看出 $$r_{pool} \propto \alpha$$。理想情况下
+
 $$
 \begin{aligned}
   r_{pool} +r_{others}=1
@@ -77,6 +78,7 @@ $$
 
 下面我们把自私者作祟的情况考虑进来：
 自私者是**故意**要在网络中**创造多个分支**，这导致会有很多的区块没有被囊括进网络。所以区块生成速度比正常情况要慢。（区块没被承认，就没有奖励）
+
 $$
 \begin{aligned}
   r_{pool} +r_{others}<1
@@ -85,6 +87,7 @@ $$
 
 
 每个矿工的真实收益率是收益率比率。
+
 $$
 \begin{aligned}
   R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\alpha+\gamma(1-2\alpha))-\alpha^{3}}{1-\alpha(1+(2-\alpha)\alpha)}
