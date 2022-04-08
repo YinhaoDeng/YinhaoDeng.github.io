@@ -42,7 +42,6 @@ tags:
 
 ## Case 2 自私者选择隐瞒，不到迫不得已时才会公布
 ![selfish 2](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case2.png?raw=true)
-![selfish 2](../img/Selfish_attack.png?raw=true)
 在状态（1）时，自私者率先发现一个新的区块，但保密。
 在状态（2）时，自私者在其链下又发现了一个区块，继续保密。
 
