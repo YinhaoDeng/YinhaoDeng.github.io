@@ -68,36 +68,38 @@ tags:
 系统里有矿工 $$1,...n$$, 矿工 $$i$$ 有$$m_{i}$$的算力，总算力为1：$$\sum_{i=1}^{n} m_{i}=1$$。自私者们的算力为$\alpha$，那么诚实者算力为$$（1-\alpha）$$。诚实者中选择在自私者矿池中挖掘的比例为$\gamma$，则诚实者中选择在诚实者矿池中挖掘的比例为$$（1-\gamma）$$。
 
 我们先看一下正常情况下的收益率：
-设自私矿池收益率为$r_{pool}$， 诚实者收益率为$$r_{others}$$。不难看出 $$r_{pool} \propto \alpha$$。理想情况下$$r_{pool} +r_{others}=1$$
+设自私矿池收益率为$r_{pool}$， 诚实者收益率为$$r_{others}$$。不难看出 $$r_{pool} \propto \alpha$$。理想情况下
+$$
+\begin{aligned}
+  r_{pool} +r_{others}=1
+\end{aligned}
+$$
 
 下面我们把自私者作祟的情况考虑进来：
 自私者是**故意**要在网络中**创造多个分支**，这导致会有很多的区块没有被囊括进网络。所以区块生成速度比正常情况要慢。（区块没被承认，就没有奖励）
-$$r_{pool} +r_{others}<1$$ 
+$$
+\begin{aligned}
+  r_{pool} +r_{others}<1
+\end{aligned}
+$$
 
 
 每个矿工的真实收益率是收益率比率。
-$$R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\alpha+\gamma(1-2\alpha))-\alpha^{3}}{1-\alpha(1+(2-\alpha)\alpha)}$$
+$$
+\begin{aligned}
+  R_{pool} = \frac{r_{pool}}{r_{pool}+r_{others}}= \frac{\alpha(1-\alpha^{2})(4\alpha+\gamma(1-2\alpha))-\alpha^{3}}{1-\alpha(1+(2-\alpha)\alpha)}
+\end{aligned}
+$$
+
 
 假设诚实者占多数： 
 $$0\le\alpha\le\frac{1}{2}$$
 当自私者的算力满足以下要求时，自私者可以赢得更多的奖励： 
 $$R_{pool}>\alpha$$
 给定$$\gamma$$，当$$\alpha$$满足以下要求时，自私者矿池可以比应得的赢得更多：  
-$$\frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}$$
 
 $$
 \begin{aligned}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
+  \frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}
 \end{aligned}
 $$
