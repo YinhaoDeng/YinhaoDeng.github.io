@@ -1,35 +1,41 @@
 # Site settings
-title: Yinhao Blog
-SEOTitle: Yinhao Deng Blog | 邓寅皓的博客
-header-img: img/beach-header.jpg
-email: yinhao.deng@outlook.com
-description: "The more you know, the less you know."
-keyword: "Yinhao, Yinhao Blog, 寅皓的博客, yinhaodeng, 邓寅皓, iOS, Apple, iPhone"
-url: "http://yinhaodeng.com"          # your host, for absolute URL
+title: YEY Blog
+SEOTitle: YEY 的博客 | YEY Blog
+header-img: img/home-bg-02.png
+email: yangye0329@gmail.com
+description: "Every failure is leading towards success."
+keyword: "YEY Blog, YEY 的博客, Data Science"
+url: "http://yey11.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
-github_repo: "https://github.com/YinhaoDeng/yinhao.github.io" # you code repository
+github_repo: "https://github.com/yey11/yey11.github.io.git" # your code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "你的专注决定了你的现实，别那么容易分心。"
-sidebar-avatar: /img/about-Yinhao.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "Forever Young."
+sidebar-avatar: /img/avatar-andy.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
 # SNS settings
 RSS: false
-github_username:    yinhaodeng
-weichat_username:   lala1454135273
-linkedin_username: yinhao-deng
-email: yinhao.deng@outlook.com
+# weibo_username:     qiubaiying
+#zhihu_username:     qiubaiying
+github_username:    yey11
+linkedin_username:  yey11
+wechat_username:  Andy
+email: yangye0329@gmail.com
+#facebook_username:  baiying.qiu.7
+#jianshu_username:   e71990ada2fd
+#twitter_username:   qiubaiying
 
 
-markdown: kramdown # add markdown
+
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
 permalink: pretty
-paginate: 10
+paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
@@ -46,25 +52,40 @@ gems: [jekyll-paginate]
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
 # document: http://jekyllrb.com/docs/configuration/#kramdown
+
+
+# 代码高亮
+#highlighter: rouge
+#markdown: kramdown
+#kramdown:
+#  input: GFM
+#  syntax_highlighter: rouge
+
+
 markdown: kramdown
-highlighter: rouge
 kramdown:
-  input: GFM                            # use Github Flavored Markdown !important
+  input: GFM                         # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 
 
 # 评论系统
 # Disqus（https://disqus.com/）
-# disqus_username: qiubaiying
+# disqus_username: andy_tk
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: yinhaodeng.github.io    #仓库名称
-  owner: yinhaodeng    #github用户名
-  admin: yinhaodeng
+  enable: true    #是否开启Gitalk评论
+  clientID: 12cf4852c3acac78c55b                            #生成的clientID
+  clientSecret: 7696f2d8427d3bac01826e7d5514488c4d1cc0fc    #生成的clientSecret
+  repo: yey11.github.io    #仓库名称
+  owner: yey11    #github用户名
+  admin: yey11
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
@@ -72,11 +93,11 @@ gitalk:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: b50bf2b12b5338a1845e33832976fd68
+ba_track_id: 95ec7ebf32a2234ba0a0d240cafb944e
 
 # Google Analytics
-ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
-ga_domain: yinhaodeng.com            # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
+ga_track_id: 'UA-148351284-1'            # Format: UA-xxxxxx-xx
+ga_domain: auto               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
 
 
@@ -93,20 +114,18 @@ chrome-tab-theme-color: "#000000"
 service-worker: true
 
 
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: true
+
 
 # Friends
-# friends: [
-#     {
-#         title: "WY",
-#         href: "http://zhengwuyang.com"
-#     },{
-#         title: "简书·BY",
-#         href: "http://www.jianshu.com/u/e71990ada2fd"
-#     },{
-#         title: "Apple",
-#         href: "https://apple.com"
-#     },{
-#         title: "Apple Developer",
-#         href: "https://developer.apple.com/"
-#     }
-# ]
+friends: [
+    {
+        title: "WM",
+        href: "https://wangmianhelo.github.io/wangmian/"
+    }
+]
+
+
+# Native Debugging for Homepage Display
+plugins: [jekyll-paginate]
