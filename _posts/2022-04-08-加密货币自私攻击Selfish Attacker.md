@@ -85,6 +85,7 @@ $$
 \end{aligned}
 $$
 
+$r_{pool} +r_{others}<1$
 
 每个矿工的真实收益率是收益率比率。
 
