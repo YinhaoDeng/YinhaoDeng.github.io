@@ -40,7 +40,7 @@ tags:
 
 
 ## Case 2 自私者选择隐瞒，不到迫不得已时才会公布
-![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case1.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case2.png)
 在状态（1）时，自私者率先发现一个新的区块，但保密。
 在状态（2）时，自私者在其链下又发现了一个区块，继续保密。
 
@@ -52,7 +52,7 @@ tags:
 
 
 ## 一旦条件形成，自私者们就开始作祟了
-![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_case2.png)
+![](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/Selfish_attack.png)
 
 自私者们的具体操作方法如下：
 1. 继续且只在自己的链上挖掘。(废话)
