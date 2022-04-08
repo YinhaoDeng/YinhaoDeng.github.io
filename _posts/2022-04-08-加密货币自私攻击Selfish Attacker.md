@@ -6,7 +6,7 @@ date:       2022-04-08
 author:     Yinhao
 header-img: img/blockchain_bg.jpg
 catalog: true
-mathjax: true
+usemathjax: true
 tags:
     - Crypto Technology
 ---
