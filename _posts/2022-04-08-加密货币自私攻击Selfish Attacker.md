@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      比特币自私挖矿(Selfish Mining)攻击方式
-subtitle:   攻击
+title:      比特币自私挖矿(Selfish Mining)
+subtitle:   一种加密货币网络攻击方式
 date:       2022-04-08
 author:     Yinhao
 header-img: img/blockchain_bg.jpg
