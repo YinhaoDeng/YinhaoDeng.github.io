@@ -105,3 +105,7 @@ $$
   \frac{1-\gamma}{3-2\gamma}\le\alpha\le\frac{1}{2}
 \end{aligned}
 $$
+
+
+Reference:
+英文原文链接：[Johns Hopkins Whiting School of Engineering](https://www.cs.jhu.edu/~abhishek/classes/CS601-641-441-Spring2018/Lecture8.pdf)
