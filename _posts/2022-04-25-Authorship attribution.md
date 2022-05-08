@@ -19,6 +19,151 @@ Authorship attribution deals with the article context similarity and author iden
 ### 2.1 History-based Baseline Model: Naïve Approach
 The baseline model is a lazy learner which is purely based on historical records, there is no learning involved. This model firstly converts features keywords, venue, year and co_author into one-hot encoding format. Secondly, the model sums up all the records to get the frequency of each feature for each author. During the inference phase, we measure the cosine similarity between the test sample of the target author with the author’s history record, and use the cosine similarity value as the predicted probability of whether the author is the true author of a given document. The baseline model obtained an overall AUC of 0.784 on the test set.
 
+``` python
+# import libraries
+import json
+import numpy as np
+import pandas as pd
+import random
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score
+```
+
+```python
+# load datasets
+with open("../input/train.json", 'r') as train_f:
+  train_data = json.load(train_f)
+
+with open("../input/test.json", 'r') as test_f:
+  test_data = json.load(test_f)
+
+train_data_length = len(train_data)
+X_train = np.zeros((train_data_length, 3293), dtype=int) # create an empty np array to store tshape = (26108, 3293)
+author_history_table = np.zeros((2302, 3293), dtype=int) 
+```
+
+```python
+train_data['0']  # one example of training data
+
+# output
+{'venue': '',
+ 'keywords': [64,
+  1,
+  322,
+  134,
+  136,
+  396,
+  270,
+  144,
+  476,
+  481,
+  165,
+  39,
+  361,
+  43,
+  177,
+  308,
+  310,
+  118,
+  187,
+  127],
+ 'year': 2017,
+ 'author': [1605, 759]}```
+```
+
+Learn from historical records
+```python
+for i in range(train_data_length):  # iterate through train_data
+    # local variables
+    keywords = np.zeros((500), dtype=int)  # shape: (26108, 500)
+    venue = np.zeros((471), dtype=int)  # shape: (26108, 471)  470 venues + '' one-hot
+    year = np.zeros((20), dtype=int) # one-hot
+    co_author = np.zeros((2302), dtype=int) # one-hot
+    
+    # keywords
+    keywords_idx_list = train_data[str(i)]['keywords']
+    for num in keywords_idx_list:
+        keywords[num] = 1
+    
+    # venue
+    venue_idx = train_data[str(i)]['venue']
+    if venue_idx != '':
+        venue[venue_idx] = 1  # assumption: only one venue!!!!!!
+    
+    # year
+    year_ = train_data[str(i)]['year']  # extract the year int
+    year[year_-2000] = 1
+
+    # author
+    author_idx_list = train_data[str(i)]['author']
+    for author_idx in author_idx_list:
+        author_idx_list_copy = author_idx_list
+        co_author_idx_list = author_idx_list_copy.remove(author_idx) 
+        
+        if co_author_idx_list is True:
+            for co_author_idx in co_author_idx_list:
+                co_author[author_idx] = 1  # co_author one-hot encoding
+    
+        one_history_of_this_author = np.concatenate([keywords, venue, year, co_author])
+        author_history_table[author_idx] += one_history_of_this_author  
+```
+
+
+author_history_table.shape:
+```
+(2302, 3293)
+```
+
+#### Test performance of baseline on the test set
+```python
+test_data_length = len(test_data)
+y_pred = np.zeros((2000))
+
+for i in range(test_data_length):  # iterate through train_data
+    # local variables
+    keywords = np.zeros((1, 500), dtype=int)  # shape: (26108, 500)
+    venue = np.zeros((1, 471), dtype=int)  # shape: (26108, 471)  470 venues + '' one-hot
+    year = np.zeros((1, 20), dtype=int) # one-hot
+    co_author = np.zeros((1, 2302), dtype=int) # one-hot
+    
+    # keywords
+    keywords_idx_list = test_data[str(i)]['keywords']
+    for num in keywords_idx_list:
+        keywords[0, num] = 1
+    
+    # venue
+    venue_idx = test_data[str(i)]['venue']
+    if venue_idx != '':
+        venue[0, venue_idx] = 1  # assumption: only one venue!!!!!!
+    
+    # year
+    year_ = test_data[str(i)]['year']  # extract the year int
+    year[0, year_-2000] = 1
+
+    # author
+    co_author_idx_list = test_data[str(i)]['coauthor']
+    
+    for co_author_idx in co_author_idx_list:
+        co_author[0, author_idx] = 1
+    
+    X_test_sample = np.concatenate([keywords, venue, year, co_author], axis=1)
+    target_author_idx = test_data[str(i)]['target']
+    
+    from scipy import spatial
+    cos_similarity = 1 - spatial.distance.cosine(author_history_table[target_author_idx], X_test_sample)
+    y_pred[i] = cos_similarity
+```
+
+
+y_pred looks like this:
+
+```
+array([0.48852953, 0.2022783 , 0.36084058, ..., 0.24672081, 0.23077797,
+       0.36128973])
+```
+
+
+
 ## 2.2 Final Approach: Embedding model
 ### 2.2.1 Sampling
 In this project, we have designed the authorship attribution task as a binary classification task. Therefore, both positive and negative samples are necessary for further development. For positive samples, we have extracted each author from the author list as the target author. For example, if a paper has two authors A and B, our training set would consist of two positive samples: {paper, author A} and {paper, author B}. This sampling method would allow us to train the model to learn directly the relationship between the paper and the target author. Whereas for negative samples, the target author is randomly selected from the negative pool. In this example, the negative pool would be a total of 2302 authors besides author A and B. Since random sampling has the limitation of not representing the full pattern of negative relationship, we have increased the number of negative samples to a ratio of 15:1, that is, for each positive sample, 15 negative samples are generated. The motivation of this sampling method is to allow the model to learn the true pattern between the negative and positive authors for each paper by providing as much information as possible, with the assumption that if a model is fully confident with true negative prediction, then consequently would have high accuracy in predicting true positives. 
