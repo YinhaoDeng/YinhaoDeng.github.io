@@ -21,6 +21,7 @@ The baseline model is a lazy learner which is purely based on historical records
 
 ``` python
 # import libraries
+
 import json
 import numpy as np
 import pandas as pd
@@ -31,6 +32,7 @@ from sklearn.metrics import roc_auc_score
 
 ```python
 # load datasets
+
 with open("../input/train.json", 'r') as train_f:
   train_data = json.load(train_f)
 
@@ -74,6 +76,7 @@ train_data['0']  # one example of training data
 Learn from historical records
 ```python
 for i in range(train_data_length):  # iterate through train_data
+   
     # local variables
     keywords = np.zeros((500), dtype=int)  # shape: (26108, 500)
     venue = np.zeros((471), dtype=int)  # shape: (26108, 471)  470 venues + '' one-hot
