@@ -4,7 +4,7 @@ title:      Authorship Attribution
 subtitle:   a deep learning method
 date:       2022-04-25
 author:     Yinhao Deng, Zi Jin, Ruochen Mao
-header-img: img/blockchain_bg.jpg
+header-img: img/Authorship-attribution.jpeg
 catalog: true
 usemathjax: true
 tags:
@@ -30,14 +30,16 @@ There are four kinds of features in this project: year, venue, keywords and auth
 In order to sufficiently detect authorship attribution using preprocessed data described in section 2.1, an embedding model is developed. Embedding is a technique used to learn and obtain a vector representation of a discrete variable. The advantage of using embedding is that the embedding vector has a relatively lower dimension compared to other traditional methods such as one-hot encoding, thus saving data memory storage and reducing computational complexity. Moreover, the vector representation learned using embedding is more informative and captures the interrelationship of similarity between each variable. Therefore, we have used 3 embedding layers to learn the vector representation of discrete features of year, venue and author respectively. In addition, the output size for embedding layers of each feature is specifically adjusted based on the difference between the original number of categories, ensuring a high-quality representation can be learned with obtaining maximal information about the corresponding feature and label, as well as avoiding high computational expense from extremely large embedding size. 
 
 ![model graph](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/model-graph.svg?raw=true)
-Figure 1. The structure of the final approach model: word embedding model with MLP.
+_Figure 1. The structure of the final approach model: word embedding model with MLP._
 
 The overall structure of the embedding model is shown in figure 1. The model inputs year, venue, keywords and author separately. Among them, year, venue and author will be fed into an embedding layer, and the corresponding embedding vector representation will be produced. On the other hand, the input for keywords is a word2vec representation obtained from a pre-trained word2vec model (as described in section 2.2.2). Using a concatenate layer, the vector representations of 4 inputs are concatenated and fed into a Multilayer Perceptron (MLP). MLP is adapted as its advantage on the capability of learning non-linear relationships, which may be more suitable for the task. Since complex models (i.e. with deeper structure or greater number of nodes) tend to overfit with high variance, and contrastively over-simple models tend to underfit with high bias, we have carefully determined the number of hidden layers and the corresponding number of nodes in the way that maximising the generalised performance and reducing computational expense. Moreover, normalisation and dropout layers are used to stabilise the model and prevent overfitting. Finally, the performance of our final approach using the embedding model achieved a validation score of AUC 0.87. And the training AUC curve and the loss curve are shown in Figure 2&3 below. From both curves, we can see that the validation score and loss converge after epoch 15, whereas the training score/loss is continuously increasing/decreasing, which indicates that the model tends to slightly overfit. One possible solution to overfitting would be increasing the sample size of both positive and negative samples. 
+
+
 ![training curve](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/training-curve.png?raw=true)
-Figure 2. Train/val AUC over epoc		  
+_Figure 2. Train/val AUC over epoc_	  
 
 ![training curve](https://github.com/YinhaoDeng/yinhao.github.io/blob/master/img/train-val-loss.png?raw=true)
-Figure 3. Train/val loss over epoch
+_Figure 3. Train/val loss over epoch_
 ## 3 Discussion
 ### 3.1 Comparison with other approach
 We have also experimented various approaches and discovered some interesting findings. One experimental approach is developing a simple MLP model (i.e. with similar structure as the second half of the embedding model) that inputs features year, venue and author as one-hot representation vectors, rather than using embedding layers to encode those features. Unfortunately, this MLP model only achieved a test AUC score of 0.79, which is a lower performance compared to our final embedding approach. One possible reason for this lower performance would be that one-hot encoding is less informative with the assumption of independence between each entity. Whereas embedding method has the ability to capture and represent the interrelationship such as similarities between each entity and thus providing additional information for the model to learn the relationship between authors and papers, resulting in higher performance. Moreover, the one-hot encoding is extremely sparse and would consume more memory resources during training. With the limitation of memory storage (16GB on Kaggle kernel), using embedding methods with inputting original desensitized variables would save more memory space and allow us to generate more samples for the model to learn and generalise better. Therefore, we can conclude that our final approach, the embedding model, has the advantage of being more informative and having lower memory cost, which leads to better performance. 
